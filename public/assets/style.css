@@ -1,0 +1,96 @@
+:root {
+  --text: #1f2933;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --bg: #f7f7f5;
+  --card: #ffffff;
+  --accent: #2563eb;
+  --danger: #dc2626;
+  --success-bg: #ecfdf5;
+  --success-text: #065f46;
+  --error-bg: #fef2f2;
+  --error-text: #991b1b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.7;
+}
+
+.container { max-width: 880px; margin: 0 auto; padding: 0 16px; }
+
+.site-header { background: var(--card); border-bottom: 1px solid var(--line); }
+.is-admin .site-header { background: #1f2933; }
+.is-admin .site-header .site-name,
+.is-admin .site-header .login-user { color: #fff; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 56px; gap: 12px; }
+.site-name { font-weight: 700; color: var(--text); text-decoration: none; }
+.logout-form { display: flex; align-items: center; gap: 8px; margin: 0; }
+
+main.container { padding-top: 24px; padding-bottom: 48px; }
+h1 { font-size: 1.5rem; margin: 0 0 16px; }
+
+.site-footer { color: var(--muted); font-size: .85rem; padding: 24px 0; border-top: 1px solid var(--line); }
+
+/* 公開ページ */
+.news-list { list-style: none; margin: 0; padding: 0; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
+.news-item { display: flex; gap: 16px; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+.news-item:last-child { border-bottom: none; }
+.news-item time { color: var(--muted); white-space: nowrap; }
+.news-item a { color: var(--accent); text-decoration: none; }
+.news-item a:hover { text-decoration: underline; }
+.news-detail { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+.news-detail time { color: var(--muted); }
+.empty { color: var(--muted); }
+
+/* 管理画面 */
+.page-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+.admin-table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); }
+.admin-table th, .admin-table td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
+.admin-table th { font-size: .85rem; color: var(--muted); font-weight: 600; }
+.actions { display: flex; gap: 6px; justify-content: flex-end; }
+.actions form { margin: 0; }
+
+.badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: .8rem; }
+.badge-public { background: var(--success-bg); color: var(--success-text); }
+.badge-draft { background: #f3f4f6; color: var(--muted); }
+
+.message { padding: 12px 16px; border-radius: 8px; margin: 0 0 16px; }
+.message ul { margin: 4px 0 0; padding-left: 20px; }
+.message p { margin: 0; }
+.message-success { background: var(--success-bg); color: var(--success-text); }
+.message-error { background: var(--error-bg); color: var(--error-text); }
+
+.form { display: grid; gap: 16px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 20px; }
+.form.narrow { max-width: 420px; }
+.form label { display: grid; gap: 6px; font-weight: 600; }
+.form label.checkbox { display: flex; align-items: center; gap: 8px; }
+.form input[type="text"], .form input[type="password"], .form input[type="date"], .form textarea {
+  width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1; border-radius: 6px; font: inherit; font-weight: 400;
+}
+.form-buttons { display: flex; gap: 8px; }
+.counter { font-weight: 400; color: var(--muted); font-size: .85rem; }
+.counter.is-over { color: var(--danger); }
+
+.button {
+  display: inline-block; padding: 8px 16px; border: 1px solid var(--accent); border-radius: 6px;
+  background: var(--accent); color: #fff; font: inherit; text-decoration: none; cursor: pointer;
+}
+.button-small { padding: 4px 10px; font-size: .85rem; }
+.button-plain { background: transparent; color: var(--accent); }
+.is-admin .site-header .button-plain { color: #fff; border-color: #fff; }
+.button-danger { background: var(--danger); border-color: var(--danger); }
+.note { margin-top: 16px; }
+
+@media (max-width: 600px) {
+  .news-item { flex-direction: column; gap: 2px; }
+  .admin-table thead { display: none; }
+  .admin-table tr { display: grid; border-bottom: 1px solid var(--line); }
+  .admin-table td { border: none; padding: 6px 12px; }
+  .actions { justify-content: flex-start; }
+}
